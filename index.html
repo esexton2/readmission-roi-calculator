@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CipherHealth Readmission ROI Calculator</title>
-    <!-- Prevent 404 for favicon -->
     <link rel="icon" href="data:,">
     
     <!-- Fonts -->
@@ -31,7 +30,6 @@
         }
         .card-shadow { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
         
-        /* Loading Spinner */
         .loader {
             border: 3px solid #f3f3f3;
             border-radius: 50%;
@@ -49,7 +47,6 @@
 </head>
 <body class="bg-slate-50 text-slate-800">
 
-    <!-- Header -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center gap-2">
@@ -75,7 +72,6 @@
             <!-- Left Column: Inputs -->
             <div class="lg:col-span-4 space-y-6">
                 
-                <!-- Section 1: Program Profile -->
                 <div class="bg-white rounded-xl card-shadow p-6 border border-slate-100">
                     <h2 class="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
                         <i class="fa-solid fa-building text-[#5f0957]"></i> Program Profile
@@ -94,7 +90,7 @@
                                 <span class="absolute left-3 top-2 text-slate-400">$</span>
                                 <input type="number" id="costPerReadmission" value="16300" class="w-full pl-7 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-[#5f0957] focus:border-[#5f0957] transition" oninput="calculateROI()">
                             </div>
-                            <p class="text-xs text-slate-500 mt-1">Estimated total cost (direct/indirect) per episode.</p>
+                            <p class="text-xs text-slate-500 mt-1">Estimated total cost per episode.</p>
                         </div>
 
                         <div>
@@ -108,36 +104,28 @@
                     </div>
                 </div>
 
-                <!-- Section 2: Attribution Analysis -->
                 <div class="bg-white rounded-xl card-shadow p-6 border border-slate-100">
                     <h2 class="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
                         <i class="fa-solid fa-chart-area text-[#5f0957]"></i> Impact Analysis
                     </h2>
-                    <p class="text-xs text-slate-500 mb-4">Compare current program performance against the unreached population baseline.</p>
                     
                     <div class="space-y-6">
-                        
-                        <!-- Unreached Rate Slider (Baseline) -->
                         <div>
                             <div class="flex justify-between mb-1">
                                 <label class="text-sm font-medium text-slate-500">Unreached Readmission Rate</label>
                                 <span class="text-sm font-bold text-slate-600" id="unreachedRateDisplay">16.5%</span>
                             </div>
                             <input type="range" id="unreachedRate" min="0" max="40" step="0.1" value="16.5" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#5f0957] slider-thumb" oninput="calculateROI()">
-                            <p class="text-xs text-slate-400 mt-1">Baseline performance without outreach.</p>
                         </div>
 
-                        <!-- Current Rate Slider (Actual) -->
                         <div class="pt-2">
                             <div class="flex justify-between mb-1">
                                 <label class="text-sm font-medium text-[#5f0957]">Current Overall Readmit Rate</label>
                                 <span class="text-sm font-bold text-[#5f0957]" id="currentRateDisplay">13.5%</span>
                             </div>
                             <input type="range" id="currentRate" min="0" max="40" step="0.1" value="13.5" class="w-full h-2 bg-[#5f0957]/20 rounded-lg appearance-none cursor-pointer accent-[#5f0957] slider-thumb" oninput="calculateROI()">
-                            <p class="text-xs text-slate-400 mt-1">Actual readmission rate with the program.</p>
                         </div>
 
-                        <!-- Impact Badge -->
                         <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 mt-2 flex justify-between items-center">
                             <span class="text-xs font-semibold text-slate-500 uppercase">Rate Variance</span>
                             <span class="text-lg font-bold text-[#00B4A4]" id="rateVarianceDisplay">-3.0%</span>
@@ -145,109 +133,86 @@
                     </div>
                 </div>
 
-                <!-- Section 3: Investment -->
                 <div class="bg-white rounded-xl card-shadow p-6 border border-slate-100">
                     <h2 class="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
                         <i class="fa-solid fa-hand-holding-dollar text-[#5f0957]"></i> Program Investment
                     </h2>
-                    
-                    <div class="space-y-4">
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1 font-semibold">Annual Outreach Program Cost</label>
-                            <div class="relative">
-                                <span class="absolute left-3 top-2 text-slate-400">$</span>
-                                <input type="number" id="programCost" value="75000" class="w-full pl-7 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-[#5f0957] focus:border-[#5f0957] transition" oninput="calculateROI()">
-                            </div>
-                            <p class="text-xs text-slate-500 mt-1">Total annual technology and services investment.</p>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1 font-semibold">Annual Outreach Program Cost</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-2 text-slate-400">$</span>
+                            <input type="number" id="programCost" value="75000" class="w-full pl-7 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-[#5f0957] focus:border-[#5f0957] transition" oninput="calculateROI()">
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <!-- Right Column: Results -->
             <div class="lg:col-span-8 space-y-6">
                 
-                <!-- Top KPI Cards -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Cost Savings Card -->
                     <div class="bg-white p-6 rounded-xl card-shadow border-l-4 border-[#00B4A4] relative overflow-hidden">
                         <div class="absolute right-0 top-0 p-4 opacity-5">
                             <i class="fa-solid fa-piggy-bank fa-3x"></i>
                         </div>
-                        <h3 class="text-slate-500 text-xs font-medium uppercase tracking-wide">
-                            Gross Cost Savings
-                        </h3>
+                        <h3 class="text-slate-500 text-xs font-medium uppercase tracking-wide">Gross Cost Savings</h3>
                         <div class="mt-2 flex items-baseline gap-2">
                             <span class="text-2xl font-bold text-slate-900" id="grossSavings">$0</span>
                         </div>
                         <p class="mt-2 text-xs text-slate-600" id="reductionLabel">0% impact</p>
                     </div>
 
-                    <!-- Volume Card -->
                     <div class="bg-white p-6 rounded-xl card-shadow border-l-4 border-[#5f0957] relative overflow-hidden">
                         <div class="absolute right-0 top-0 p-4 opacity-5">
                             <i class="fa-solid fa-user-shield fa-3x"></i>
                         </div>
-                        <h3 class="text-slate-500 text-xs font-medium uppercase tracking-wide">
-                            Prevented Readmits
-                        </h3>
+                        <h3 class="text-slate-500 text-xs font-medium uppercase tracking-wide">Prevented Readmits</h3>
                         <div class="mt-2 flex items-baseline gap-2">
                             <span class="text-2xl font-bold text-slate-900" id="preventedCount">0</span>
                             <span class="text-xs text-slate-500 font-medium ml-1">Patients</span>
                         </div>
-                        <p class="mt-2 text-xs text-slate-600">Avoided hospitalizations</p>
                     </div>
 
-                    <!-- Bed Days Card -->
                     <div class="bg-white p-6 rounded-xl card-shadow border-l-4 border-orange-500 relative overflow-hidden">
                         <div class="absolute right-0 top-0 p-4 opacity-5">
                             <i class="fa-solid fa-bed fa-3x"></i>
                         </div>
-                        <h3 class="text-slate-500 text-xs font-medium uppercase tracking-wide">
-                            Patient Days Saved
-                        </h3>
+                        <h3 class="text-slate-500 text-xs font-medium uppercase tracking-wide">Patient Days Saved</h3>
                         <div class="mt-2 flex items-baseline gap-2">
                             <span class="text-2xl font-bold text-slate-900" id="bedDaysSaved">0</span>
                             <span class="text-xs text-slate-500 font-medium ml-1">Days</span>
                         </div>
-                        <p class="mt-2 text-xs text-slate-600">Clinical capacity gains</p>
                     </div>
                 </div>
 
-                <!-- Main Chart Area -->
                 <div class="bg-white p-6 rounded-xl card-shadow border border-slate-100">
-                    <h3 class="text-lg font-semibold text-slate-800 mb-6">Annual Financial & Clinical Impact</h3>
+                    <h3 class="text-lg font-semibold text-slate-800 mb-6">Impact Visualization</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div class="w-full h-64">
-                            <h4 class="text-sm font-medium text-slate-500 text-center mb-2 uppercase tracking-tighter">Total Readmission Costs</h4>
+                            <h4 class="text-sm font-medium text-slate-500 text-center mb-2">Annual Costs</h4>
                             <canvas id="costChart"></canvas>
                         </div>
                         <div class="w-full h-64">
-                            <h4 class="text-sm font-medium text-slate-500 text-center mb-2 uppercase tracking-tighter">Readmission Volume</h4>
+                            <h4 class="text-sm font-medium text-slate-500 text-center mb-2">Readmission Volume</h4>
                             <canvas id="volumeChart"></canvas>
                         </div>
                     </div>
                 </div>
 
-                <!-- Detailed Breakdown Table -->
                 <div class="bg-white overflow-hidden rounded-xl card-shadow border border-slate-100">
                     <table class="min-w-full divide-y divide-slate-200">
                         <thead class="bg-slate-50">
                             <tr>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Metric (Annual)</th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Baseline (Unreached)</th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#5f0957] uppercase tracking-wider font-bold">Actual (Current)</th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#00B4A4] uppercase tracking-wider font-bold">Impact</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Metric (Annual)</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Baseline</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-[#5f0957] uppercase tracking-wider font-bold">Actual</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-[#00B4A4] uppercase tracking-wider font-bold">Impact</th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white divide-y divide-slate-200 font-medium" id="breakdownTable">
-                            <!-- Populated by JS -->
-                        </tbody>
+                        <tbody class="bg-white divide-y divide-slate-200 text-sm" id="breakdownTable"></tbody>
                     </table>
                 </div>
 
-                <!-- Total ROI Footer -->
                 <div class="bg-[#5f0957] rounded-xl p-8 text-white shadow-lg">
                     <div class="flex flex-col md:flex-row justify-between items-center gap-6">
                         <div>
@@ -255,190 +220,76 @@
                             <p class="text-white/70 mt-1">Gross Cost Savings - Program Investment</p>
                         </div>
                         <div class="text-right">
-                             <div class="text-4xl font-black tracking-tight bg-black/20 px-6 py-4 rounded-xl border border-white/10 shadow-inner" id="netSavings">
-                                $0
-                            </div>
+                             <div class="text-4xl font-black tracking-tight bg-black/20 px-6 py-4 rounded-xl border border-white/10" id="netSavings">$0</div>
                             <p class="text-sm text-white/60 mt-3 font-medium" id="roiPercentDisplay">ROI: 0%</p>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-
     </main>
 
-    <!-- PDF EXPORT TEMPLATE (HIDDEN) -->
-    <div id="pdf-report-container" class="hidden fixed inset-0 z-[50] bg-slate-100 overflow-y-auto flex items-start justify-center pt-10 pb-10">
-        <div class="bg-white w-[720px] min-h-[1000px] p-8 shadow-2xl text-slate-800 border border-slate-200">
+    <!-- PDF TEMPLATE (HIDDEN) -->
+    <div id="pdf-report-container" class="hidden fixed inset-0 z-[50] bg-slate-100 flex items-start justify-center pt-10 pb-10 overflow-y-auto">
+        <div class="bg-white w-[720px] min-h-[1000px] p-8 text-slate-800 border border-slate-200">
             <div class="flex justify-between items-end border-b-2 border-slate-200 pb-4 mb-8">
                 <div>
-                    <h1 class="text-3xl font-bold text-slate-900">ROI Analysis Report</h1>
-                    <p class="text-slate-500 mt-1 uppercase tracking-widest text-xs font-bold">Readmission Reduction Program</p>
+                    <h1 class="text-3xl font-bold">ROI Analysis</h1>
+                    <p class="text-slate-500 text-xs font-bold uppercase tracking-widest">CipherHealth Readmission Reduction</p>
                 </div>
                 <div class="text-right">
-                    <div class="flex items-center gap-2 justify-end mb-1">
-                        <div class="bg-[#5f0957] text-white p-1 rounded">
-                            <i class="fa-solid fa-hospital-user"></i>
-                        </div>
-                        <span class="font-bold text-xl tracking-tight">CipherHealth</span>
-                    </div>
-                    <p class="text-[10px] text-slate-400 font-medium" id="reportDate">Date: </p>
+                    <span class="font-bold text-xl text-[#5f0957]">CipherHealth</span>
+                    <p class="text-[10px] text-slate-400" id="reportDate"></p>
                 </div>
             </div>
-
-            <div class="bg-slate-50 border border-slate-200 rounded-lg p-6 mb-8">
-                <h2 class="text-sm font-bold text-slate-400 mb-4 uppercase tracking-wider border-b border-slate-200 pb-2">Executive Summary</h2>
+            <div class="bg-slate-50 border p-6 mb-8 rounded-lg">
                 <div class="grid grid-cols-2 gap-8">
                     <div>
-                        <p class="text-xs text-slate-400 mb-1 font-bold uppercase">Projected Net Annual Savings</p>
-                        <p class="text-4xl font-bold text-[#5f0957]" id="pdfNetSavings">$0</p>
-                        <p class="text-[10px] text-slate-400 mt-2 italic">Calculated after program investment</p>
+                        <p class="text-xs font-bold text-slate-400 uppercase mb-1">Net Annual Savings</p>
+                        <p class="text-4xl font-bold text-[#5f0957]" id="pdfNetSavings"></p>
                     </div>
-                    <div class="space-y-2">
-                        <div class="flex justify-between border-b border-slate-100 pb-1">
-                            <span class="text-xs text-slate-500">Gross Cost Savings</span>
-                            <span class="text-xs font-bold text-[#00B4A4]" id="pdfGrossSavings">$0</span>
-                        </div>
-                        <div class="flex justify-between border-b border-slate-100 pb-1">
-                            <span class="text-xs text-slate-500">Readmissions Prevented</span>
-                            <span class="text-xs font-bold text-[#5f0957]" id="pdfPreventedCount">0</span>
-                        </div>
-                        <div class="flex justify-between border-b border-slate-100 pb-1">
-                            <span class="text-xs text-slate-500">Patient Days Saved</span>
-                            <span class="text-xs font-bold text-orange-500" id="pdfBedDaysSaved">0</span>
-                        </div>
-                        <div class="flex justify-between pb-1">
-                            <span class="text-xs text-slate-500">Program ROI %</span>
-                            <span class="text-xs font-bold text-slate-800" id="pdfRoiPercent">0%</span>
-                        </div>
+                    <div class="text-sm space-y-1">
+                        <div class="flex justify-between"><span>Gross Savings:</span><span id="pdfGrossSavings" class="font-bold text-[#00B4A4]"></span></div>
+                        <div class="flex justify-between"><span>Prevented:</span><span id="pdfPreventedCount" class="font-bold"></span></div>
+                        <div class="flex justify-between"><span>Days Saved:</span><span id="pdfBedDaysSaved" class="font-bold text-orange-500"></span></div>
+                        <div class="flex justify-between"><span>ROI:</span><span id="pdfRoiPercent" class="font-bold"></span></div>
                     </div>
                 </div>
             </div>
-
-            <div class="mb-8">
-                <h2 class="text-sm font-bold text-slate-400 mb-4 uppercase tracking-wider border-b border-slate-200 pb-2">Clinical & Financial Impact</h2>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="border border-slate-100 rounded p-2">
-                        <h3 class="text-center text-[10px] font-bold text-slate-400 mb-2 uppercase">Annual Costs</h3>
-                        <img id="pdfCostChartImg" class="w-full h-auto block">
-                    </div>
-                    <div class="border border-slate-100 rounded p-2">
-                        <h3 class="text-center text-[10px] font-bold text-slate-400 mb-2 uppercase">Volume Reduction</h3>
-                        <img id="pdfVolumeChartImg" class="w-full h-auto block">
-                    </div>
-                </div>
+            <div class="grid grid-cols-2 gap-4 mb-8">
+                <div class="border p-2 rounded"><img id="pdfCostChartImg" class="w-full"></div>
+                <div class="border p-2 rounded"><img id="pdfVolumeChartImg" class="w-full"></div>
             </div>
-
-            <div class="mb-8">
-                 <h2 class="text-sm font-bold text-slate-400 mb-4 uppercase tracking-wider border-b border-slate-200 pb-2">Analysis Assumptions</h2>
-                 <div class="grid grid-cols-3 gap-3 text-[10px]">
-                     <div class="bg-white p-2 border border-slate-200 rounded">
-                         <span class="block text-[8px] text-slate-400 uppercase font-bold">Outreach Volume</span>
-                         <span class="block font-bold text-slate-800" id="pdfDischarges">0</span>
-                     </div>
-                     <div class="bg-white p-2 border border-slate-200 rounded">
-                         <span class="block text-[8px] text-slate-400 uppercase font-bold">Cost / Readmission</span>
-                         <span class="block font-bold text-slate-800" id="pdfCostPer">$0</span>
-                     </div>
-                     <div class="bg-white p-2 border border-slate-200 rounded">
-                         <span class="block text-[8px] text-slate-400 uppercase font-bold">ALOS (Days)</span>
-                         <span class="block font-bold text-slate-800" id="pdfAlos">0</span>
-                     </div>
-                     <div class="bg-white p-2 border border-slate-200 rounded">
-                         <span class="block text-[8px] text-slate-400 uppercase font-bold">Program Cost</span>
-                         <span class="block font-bold text-slate-800" id="pdfProgramCost">$0</span>
-                     </div>
-                     <div class="bg-white p-2 border border-slate-200 rounded">
-                         <span class="block text-[8px] text-slate-400 uppercase font-bold">Unreached Rate</span>
-                         <span class="block font-bold text-slate-800" id="pdfUnreachedRate">0%</span>
-                     </div>
-                     <div class="bg-white p-2 border border-slate-200 rounded">
-                         <span class="block text-[8px] text-slate-400 uppercase font-bold">Current Rate</span>
-                         <span class="block font-bold text-[#5f0957]" id="pdfCurrentRate">0%</span>
-                     </div>
-                 </div>
+            <div class="grid grid-cols-3 gap-2 text-[9px] mb-8">
+                <div class="bg-white border p-2 rounded">VOL: <span id="pdfDischarges" class="font-bold"></span></div>
+                <div class="bg-white border p-2 rounded">COST/R: <span id="pdfCostPer" class="font-bold"></span></div>
+                <div class="bg-white border p-2 rounded">ALOS: <span id="pdfAlos" class="font-bold"></span></div>
+                <div class="bg-white border p-2 rounded">INVEST: <span id="pdfProgramCost" class="font-bold"></span></div>
+                <div class="bg-white border p-2 rounded">BASELINE: <span id="pdfUnreachedRate" class="font-bold"></span></div>
+                <div class="bg-white border p-2 rounded">ACTUAL: <span id="pdfCurrentRate" class="font-bold"></span></div>
             </div>
-
-            <div>
-                <h2 class="text-sm font-bold text-slate-400 mb-2 uppercase tracking-wider border-b border-slate-200 pb-2">Detailed Metric Comparison</h2>
-                <table class="w-full text-[10px] text-left text-slate-600">
-                    <thead class="text-slate-700 uppercase bg-slate-100">
-                        <tr>
-                            <th class="px-3 py-2">Metric</th>
-                            <th class="px-3 py-2">Baseline</th>
-                            <th class="px-3 py-2 text-[#5f0957]">Actual</th>
-                            <th class="px-3 py-2 text-[#00B4A4]">Impact</th>
-                        </tr>
-                    </thead>
-                    <tbody id="pdfTableBody" class="divide-y divide-slate-100 border-b border-slate-100"></tbody>
-                </table>
-            </div>
-
-            <div class="mt-auto text-center text-[8px] text-slate-400 border-t border-slate-100 pt-10">
-                <p>Generated by CipherHealth Analytics • Confidential Analysis • www.cipherhealth.com</p>
-            </div>
+            <table class="w-full text-[10px] text-left">
+                <thead class="bg-slate-100"><tr><th class="p-2">Metric</th><th class="p-2">Baseline</th><th class="p-2">Actual</th><th class="p-2">Impact</th></tr></thead>
+                <tbody id="pdfTableBody" class="divide-y"></tbody>
+            </table>
         </div>
     </div>
 
     <script>
-        // Chart Utility Options
+        const fmt = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
         const commonOptions = {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { display: false },
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            if(context.dataset.label.includes('Cost')) {
-                                return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(context.parsed.y);
-                            }
-                            return context.parsed.y.toLocaleString() + ' Patients';
-                        }
-                    }
-                }
-            },
+            responsive: true, maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
             scales: { y: { beginAtZero: true } }
         };
 
-        const costCtx = document.getElementById('costChart').getContext('2d');
-        let costChart = new Chart(costCtx, {
-            type: 'bar',
-            data: {
-                labels: ['Baseline', 'Actual'],
-                datasets: [{
-                    label: 'Total Readmission Cost',
-                    data: [0, 0],
-                    backgroundColor: ['#cbd5e1', '#5f0957'],
-                    borderRadius: 8,
-                    barPercentage: 0.6
-                }]
-            },
-            options: {
-                ...commonOptions,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: { callback: (v) => '$' + v.toLocaleString() }
-                    }
-                }
-            }
+        let costChart = new Chart(document.getElementById('costChart').getContext('2d'), {
+            type: 'bar', data: { labels: ['Baseline', 'Actual'], datasets: [{ data: [0,0], backgroundColor: ['#cbd5e1', '#5f0957'], borderRadius: 8 }] },
+            options: { ...commonOptions, scales: { y: { ticks: { callback: v => '$' + v.toLocaleString() } } } }
         });
 
-        const volCtx = document.getElementById('volumeChart').getContext('2d');
-        let volumeChart = new Chart(volCtx, {
-            type: 'bar',
-            data: {
-                labels: ['Baseline', 'Actual'],
-                datasets: [{
-                    label: 'Readmission Volume',
-                    data: [0, 0],
-                    backgroundColor: ['#cbd5e1', '#5f0957'],
-                    borderRadius: 8,
-                    barPercentage: 0.6
-                }]
-            },
+        let volumeChart = new Chart(document.getElementById('volumeChart').getContext('2d'), {
+            type: 'bar', data: { labels: ['Baseline', 'Actual'], datasets: [{ data: [0,0], backgroundColor: ['#cbd5e1', '#5f0957'], borderRadius: 8 }] },
             options: commonOptions
         });
 
@@ -456,11 +307,9 @@
             document.getElementById('currentRateDisplay').innerText = (currentRatePct * 100).toFixed(1) + '%';
             
             const variancePct = currentRatePct - unreachedRatePct;
-            const varElem = document.getElementById('rateVarianceDisplay');
-            varElem.innerText = (variancePct * 100).toFixed(1) + '%';
-            varElem.className = variancePct <= 0 ? "text-lg font-bold text-[#00B4A4]" : "text-lg font-bold text-red-500";
+            document.getElementById('rateVarianceDisplay').innerText = (variancePct * 100).toFixed(1) + '%';
+            document.getElementById('rateVarianceDisplay').className = variancePct <= 0 ? "text-lg font-bold text-[#00B4A4]" : "text-lg font-bold text-red-500";
 
-            // Calculations
             const baselineReadmissions = Math.round(annualDischarges * unreachedRatePct);
             const baselineTotalCost = baselineReadmissions * costPerReadmission;
             const baselineBedDays = Math.round(baselineReadmissions * alos);
@@ -469,33 +318,20 @@
             const actualTotalCost = actualReadmissions * costPerReadmission;
             const actualBedDays = Math.round(actualReadmissions * alos);
 
-            const relativeReduction = unreachedRatePct > 0 ? (unreachedRatePct - currentRatePct) / unreachedRatePct : 0;
             const readmissionsPrevented = Math.max(0, baselineReadmissions - actualReadmissions);
             const bedDaysSaved = Math.max(0, baselineBedDays - actualBedDays);
             const grossSavings = Math.max(0, baselineTotalCost - actualTotalCost);
             const netSavings = grossSavings - programCost;
             const roiPercent = programCost > 0 ? (netSavings / programCost) * 100 : 0;
             
-            calcState = {
-                annualDischarges, costPerReadmission, programCost, alos,
-                unreachedRatePct, currentRatePct, variancePct,
-                baselineReadmissions, baselineTotalCost, baselineBedDays,
-                actualReadmissions, actualTotalCost, actualBedDays,
-                relativeReduction, readmissionsPrevented, bedDaysSaved, grossSavings, netSavings, roiPercent
-            };
+            calcState = { annualDischarges, costPerReadmission, programCost, alos, unreachedRatePct, currentRatePct, variancePct, baselineReadmissions, baselineTotalCost, baselineBedDays, actualReadmissions, actualTotalCost, actualBedDays, readmissionsPrevented, bedDaysSaved, grossSavings, netSavings, roiPercent };
 
-            // Update UI
-            const fmt = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
-            
             document.getElementById('grossSavings').innerText = fmt.format(grossSavings);
-            document.getElementById('reductionLabel').innerText = Math.max(0, Math.round(relativeReduction * 100)) + '% total reduction';
+            document.getElementById('reductionLabel').innerText = (unreachedRatePct > 0 ? Math.max(0, Math.round(((unreachedRatePct - currentRatePct)/unreachedRatePct)*100)) : 0) + '% reduction';
             document.getElementById('preventedCount').innerText = readmissionsPrevented.toLocaleString();
             document.getElementById('bedDaysSaved').innerText = bedDaysSaved.toLocaleString();
             document.getElementById('netSavings').innerText = fmt.format(netSavings);
-            
-            const roiDisplay = document.getElementById('roiPercentDisplay');
-            roiDisplay.innerText = `ROI: ${Math.round(roiPercent)}%`;
-            roiDisplay.className = roiPercent >= 0 ? "text-sm text-white/60 mt-3 font-medium" : "text-sm text-red-300 mt-3 font-bold uppercase";
+            document.getElementById('roiPercentDisplay').innerText = `ROI: ${Math.round(roiPercent)}%`;
 
             costChart.data.datasets[0].data = [baselineTotalCost, actualTotalCost];
             costChart.update();
@@ -503,42 +339,18 @@
             volumeChart.update();
 
             document.getElementById('breakdownTable').innerHTML = `
-                <tr>
-                    <td class="px-6 py-4">Readmission Rate</td>
-                    <td class="px-6 py-4 text-slate-500">${(unreachedRatePct*100).toFixed(1)}%</td>
-                    <td class="px-6 py-4 text-[#5f0957]">${(currentRatePct*100).toFixed(1)}%</td>
-                    <td class="px-6 py-4 text-[#00B4A4]">${(variancePct*100).toFixed(1)}%</td>
-                </tr>
-                <tr>
-                    <td class="px-6 py-4">Readmission Volume</td>
-                    <td class="px-6 py-4 text-slate-500">${baselineReadmissions.toLocaleString()}</td>
-                    <td class="px-6 py-4 text-[#5f0957]">${actualReadmissions.toLocaleString()}</td>
-                    <td class="px-6 py-4 text-[#00B4A4]">-${readmissionsPrevented.toLocaleString()} Patients</td>
-                </tr>
-                <tr>
-                    <td class="px-6 py-4">Patient Days (Bed Days)</td>
-                    <td class="px-6 py-4 text-slate-500">${baselineBedDays.toLocaleString()}</td>
-                    <td class="px-6 py-4 text-[#5f0957]">${actualBedDays.toLocaleString()}</td>
-                    <td class="px-6 py-4 text-[#00B4A4]">-${bedDaysSaved.toLocaleString()} Days</td>
-                </tr>
-                <tr>
-                    <td class="px-6 py-4">Total Program Costs</td>
-                    <td class="px-6 py-4 text-slate-500">${fmt.format(baselineTotalCost)}</td>
-                    <td class="px-6 py-4 text-[#5f0957]">${fmt.format(actualTotalCost)}</td>
-                    <td class="px-6 py-4 text-[#00B4A4]">-${fmt.format(grossSavings)}</td>
-                </tr>
+                <tr><td class="px-6 py-4">Readmission Rate</td><td class="px-6 py-4">${(unreachedRatePct*100).toFixed(1)}%</td><td class="px-6 py-4 text-[#5f0957]">${(currentRatePct*100).toFixed(1)}%</td><td class="px-6 py-4 text-[#00B4A4] font-bold">${(variancePct*100).toFixed(1)}%</td></tr>
+                <tr><td class="px-6 py-4">Volume</td><td class="px-6 py-4">${baselineReadmissions.toLocaleString()}</td><td class="px-6 py-4 text-[#5f0957]">${actualReadmissions.toLocaleString()}</td><td class="px-6 py-4 text-[#00B4A4] font-bold">-${readmissionsPrevented.toLocaleString()}</td></tr>
+                <tr><td class="px-6 py-4">Patient Days</td><td class="px-6 py-4">${baselineBedDays.toLocaleString()}</td><td class="px-6 py-4 text-[#5f0957]">${actualBedDays.toLocaleString()}</td><td class="px-6 py-4 text-[#00B4A4] font-bold">-${bedDaysSaved.toLocaleString()}</td></tr>
+                <tr><td class="px-6 py-4">Avoided Costs</td><td class="px-6 py-4">${fmt.format(baselineTotalCost)}</td><td class="px-6 py-4 text-[#5f0957]">${fmt.format(actualTotalCost)}</td><td class="px-6 py-4 text-[#00B4A4] font-bold">-${fmt.format(grossSavings)}</td></tr>
             `;
         }
 
         async function generatePDF() {
             const btn = document.getElementById('exportBtn');
-            const originalBtnText = btn.innerHTML;
             btn.innerHTML = `<div class="loader mr-2"></div> Exporting...`;
             btn.disabled = true;
 
-            const fmt = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
-
-            // Populate PDF
             document.getElementById('reportDate').innerText = 'Report Date: ' + new Date().toLocaleDateString();
             document.getElementById('pdfNetSavings').innerText = fmt.format(calcState.netSavings);
             document.getElementById('pdfGrossSavings').innerText = fmt.format(calcState.grossSavings);
@@ -553,59 +365,25 @@
             document.getElementById('pdfCurrentRate').innerText = (calcState.currentRatePct * 100).toFixed(1) + '%';
 
             document.getElementById('pdfTableBody').innerHTML = `
-                <tr>
-                    <td class="px-3 py-2 border-b">Rate</td>
-                    <td class="px-3 py-2 border-b">${(calcState.unreachedRatePct*100).toFixed(1)}%</td>
-                    <td class="px-3 py-2 border-b text-[#5f0957] font-bold">${(calcState.currentRatePct*100).toFixed(1)}%</td>
-                    <td class="px-3 py-2 border-b text-[#00B4A4] font-bold">${(calcState.variancePct*100).toFixed(1)}%</td>
-                </tr>
-                <tr>
-                    <td class="px-3 py-2 border-b">Volume</td>
-                    <td class="px-3 py-2 border-b">${calcState.baselineReadmissions.toLocaleString()}</td>
-                    <td class="px-3 py-2 border-b text-[#5f0957] font-bold">${calcState.actualReadmissions.toLocaleString()}</td>
-                    <td class="px-3 py-2 border-b text-[#00B4A4] font-bold">-${calcState.readmissionsPrevented.toLocaleString()}</td>
-                </tr>
-                <tr>
-                    <td class="px-3 py-2 border-b">Days</td>
-                    <td class="px-3 py-2 border-b">${calcState.baselineBedDays.toLocaleString()}</td>
-                    <td class="px-3 py-2 border-b text-[#5f0957] font-bold">${calcState.actualBedDays.toLocaleString()}</td>
-                    <td class="px-3 py-2 border-b text-[#00B4A4] font-bold">-${calcState.bedDaysSaved.toLocaleString()}</td>
-                </tr>
-                <tr>
-                    <td class="px-3 py-2">Cost</td>
-                    <td class="px-3 py-2">${fmt.format(calcState.baselineTotalCost)}</td>
-                    <td class="px-3 py-2 text-[#5f0957] font-bold">${fmt.format(calcState.actualTotalCost)}</td>
-                    <td class="px-3 py-2 text-[#00B4A4] font-bold">-${fmt.format(calcState.grossSavings)}</td>
-                </tr>
+                <tr><td class="p-2 border-b">Rate</td><td class="p-2 border-b">${(calcState.unreachedRatePct*100).toFixed(1)}%</td><td class="p-2 border-b font-bold">${(calcState.currentRatePct*100).toFixed(1)}%</td><td class="p-2 border-b text-[#00B4A4] font-bold">${(calcState.variancePct*100).toFixed(1)}%</td></tr>
+                <tr><td class="p-2 border-b">Volume</td><td class="p-2 border-b">${calcState.baselineReadmissions.toLocaleString()}</td><td class="p-2 border-b font-bold">${calcState.actualReadmissions.toLocaleString()}</td><td class="p-2 border-b text-[#00B4A4] font-bold">-${calcState.readmissionsPrevented.toLocaleString()}</td></tr>
+                <tr><td class="p-2">Cost</td><td class="p-2">${fmt.format(calcState.baselineTotalCost)}</td><td class="p-2 font-bold">${fmt.format(calcState.actualTotalCost)}</td><td class="p-2 text-[#00B4A4] font-bold">-${fmt.format(calcState.grossSavings)}</td></tr>
             `;
 
             const container = document.getElementById('pdf-report-container');
             const innerDoc = container.querySelector('.bg-white');
-            const scrollPos = window.scrollY;
-            window.scrollTo(0, 0);
             container.classList.remove('hidden');
 
             setTimeout(() => {
                 document.getElementById('pdfCostChartImg').src = costChart.toBase64Image();
                 document.getElementById('pdfVolumeChartImg').src = volumeChart.toBase64Image();
 
-                const opt = {
-                    margin: 0.5,
-                    filename: 'CipherHealth_ROI_Analysis.pdf',
-                    image: { type: 'jpeg', quality: 0.98 },
-                    html2canvas: { scale: 2, useCORS: true },
-                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-                };
-
-                setTimeout(() => {
-                    html2pdf().from(innerDoc).set(opt).save().then(() => {
-                        container.classList.add('hidden');
-                        window.scrollTo(0, scrollPos);
-                        btn.innerHTML = originalBtnText;
-                        btn.disabled = false;
-                    });
-                }, 800);
-            }, 100);
+                html2pdf().from(innerDoc).set({ margin: 0.5, filename: 'ROI_Analysis.pdf', image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' } }).save().then(() => {
+                    container.classList.add('hidden');
+                    btn.innerHTML = `<i class="fa-solid fa-file-pdf"></i><span>Export to PDF</span>`;
+                    btn.disabled = false;
+                });
+            }, 800);
         }
 
         window.onload = calculateROI;
